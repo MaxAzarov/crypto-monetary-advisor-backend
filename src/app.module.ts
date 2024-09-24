@@ -5,7 +5,9 @@ import * as Joi from 'joi';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -21,8 +23,11 @@ import { TypeOrmConfigService } from './database/typeorm-config.service';
         DATABASE_USERNAME: Joi.string().required(),
         DATABASE_NAME: Joi.string().required(),
         DATABASE_PASSWORD: Joi.string().required(),
+        AUTH_TOKEN_SECRET: Joi.string().required(),
       }),
     }),
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
