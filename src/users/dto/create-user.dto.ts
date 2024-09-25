@@ -6,17 +6,12 @@ import {
   IsOptional,
   IsPhoneNumber,
   MinLength,
-  Validate,
 } from 'class-validator';
-import { IsNotExist } from 'src/database/utils/is-not-exists.validator';
 
 export class CreateUserDto {
   @ApiProperty({ example: 'volodor05412@example.com' })
   @Transform(({ value }) => value?.toLowerCase().trim())
   @IsNotEmpty()
-  @Validate(IsNotExist, ['User'], {
-    message: 'emailAlreadyExists',
-  })
   @IsEmail()
   email: string;
 

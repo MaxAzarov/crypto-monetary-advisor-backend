@@ -8,6 +8,8 @@ import * as bcrypt from 'bcryptjs';
 import { ExpressUser } from 'src/common/types';
 import { UsersService } from 'src/users/users.service';
 
+import { SignupDto } from './dto/auth-signup.dto';
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -46,5 +48,17 @@ export class AuthService {
         error: 'Invalid user data',
       });
     }
+  }
+
+  async signUp(loginDto: SignupDto) {
+    const user = await this.usersService.findOne({ email: loginDto.email });
+
+    if (user) {
+      throw new BadRequestException({
+        error: 'User exists',
+      });
+    }
+
+    return await this.usersService.create(loginDto);
   }
 }
