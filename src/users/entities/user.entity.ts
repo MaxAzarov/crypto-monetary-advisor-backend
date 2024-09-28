@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import * as bcrypt from 'bcryptjs';
 import { EntityHelper } from 'src/database/utils';
+import { Wallet } from 'src/wallets/entities/wallet.entity';
 import {
   AfterLoad,
   BeforeInsert,
@@ -10,6 +11,7 @@ import {
   DeleteDateColumn,
   Entity,
   Index,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -61,4 +63,7 @@ export class User extends EntityHelper {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @OneToMany(() => Wallet, (wallet) => wallet.user)
+  wallets: Wallet[];
 }

@@ -37,6 +37,7 @@
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "ethers": "^6.13.2",
     "joi": "^17.13.3",
     "passport-jwt": "^4.0.1",
     "pg": "^8.13.0",
