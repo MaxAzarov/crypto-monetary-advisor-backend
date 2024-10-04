@@ -3,8 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { UsersModule } from './users/users.module';
@@ -31,7 +29,7 @@ import { WalletsModule } from './wallets/wallets.module';
     UsersModule,
     WalletsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
