@@ -5,6 +5,7 @@ import * as Joi from 'joi';
 
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
+import { OpenaiModule } from './openai/openai.module';
 import { UsersModule } from './users/users.module';
 import { WalletsModule } from './wallets/wallets.module';
 
@@ -23,11 +24,13 @@ import { WalletsModule } from './wallets/wallets.module';
         DATABASE_NAME: Joi.string().required(),
         DATABASE_PASSWORD: Joi.string().required(),
         AUTH_TOKEN_SECRET: Joi.string().required(),
+        OPENAI_API_KEY: Joi.string().required(),
       }),
     }),
     AuthModule,
     UsersModule,
     WalletsModule,
+    OpenaiModule,
   ],
   controllers: [],
   providers: [],
