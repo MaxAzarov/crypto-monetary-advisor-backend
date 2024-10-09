@@ -8,12 +8,12 @@ export class BinanceServiceService {
 
   private readonly CANDLE_REPEAT_INTERVAL = 150;
 
-  getCandleEmitter() {
+  getCandleEmitter(pair: string) {
     return new Observable((subscriber) => {
       const repeatEmitter = new Subject<number>();
 
       const disposeCandle = this.binance.ws.candles(
-        'ETHUSDT',
+        pair,
         '1m',
         (candle: Candle) => {
           const price = parseFloat(candle.high);

@@ -1,5 +1,7 @@
 import { Logger } from '@nestjs/common';
 import {
+  ConnectedSocket,
+  MessageBody,
   OnGatewayConnection,
   OnGatewayDisconnect,
   SubscribeMessage,
@@ -46,31 +48,34 @@ export class BinanceGateway
   }
 
   @SubscribeMessage('subscribeToCandle')
-  async handleSubscribeToCandle(client: Socket, token: string) {
+  async handleSubscribeToCandle(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { pair: string },
+  ) {
     try {
-      this.logger.log(`Client ${client.id} authenticated with token: ${token}`);
+      if (data.pair) {
+        const subscription = this.binanceServiceService
+          .getCandleEmitter(data.pair)
+          .subscribe(
+            (price) => {
+              client.emit('candleData', price.toString());
+            },
+            (error) => {
+              this.handleError(client, error);
+            },
+          );
 
-      const subscription = this.binanceServiceService
-        .getCandleEmitter()
-        .subscribe(
-          (price) => {
-            client.emit('candleData', price.toString());
-          },
-          (error) => {
-            this.handleError(client, error, token);
-          },
-        );
-
-      this.subscriptions.set(client.id, subscription);
+        this.subscriptions.set(client.id, subscription);
+      }
     } catch (error) {
-      this.handleError(client, error, token);
+      this.handleError(client, error);
     }
   }
 
-  private handleError(client: Socket, error: Error, token: string) {
+  private handleError(client: Socket, error: Error) {
     const serializedError = serializeError(error);
     this.logger.error(
-      `Error for client ${client.id} with token ${token}: ${serializedError.message}`,
+      `Error for client ${client.id}: ${serializedError.message}`,
     );
     client.emit('error', serializedError);
     client.disconnect();
