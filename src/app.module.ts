@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 
 import { AuthModule } from './auth/auth.module';
+import { BinanceServiceModule } from './binance-service/binance-service.module';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { OpenaiModule } from './openai/openai.module';
 import { UsersModule } from './users/users.module';
@@ -31,6 +32,7 @@ import { WalletsModule } from './wallets/wallets.module';
     UsersModule,
     WalletsModule,
     OpenaiModule,
+    BinanceServiceModule,
   ],
   controllers: [],
   providers: [],
