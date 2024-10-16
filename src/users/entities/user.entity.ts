@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import * as bcrypt from 'bcryptjs';
 import { EntityHelper } from 'src/database/utils';
+import { MonobankClient } from 'src/monobank/entities/monobank-client.entity';
 import { Wallet } from 'src/wallets/entities/wallet.entity';
 import {
   AfterLoad,
@@ -66,4 +67,7 @@ export class User extends EntityHelper {
 
   @OneToMany(() => Wallet, (wallet) => wallet.user)
   wallets: Wallet[];
+
+  @OneToMany(() => MonobankClient, (monobank) => monobank.user)
+  monobankAccounts: MonobankClient[];
 }

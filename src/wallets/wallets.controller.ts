@@ -47,11 +47,7 @@ export class WalletController {
 
   @Put(':id')
   @HttpCode(HttpStatus.OK)
-  update(
-    @Request() { user }: IJWTAuthorizedRequest,
-    @Param('id') id: number,
-    @Body() updateWalletDto: UpdateWalletDto,
-  ) {
+  update(@Param('id') id: number, @Body() updateWalletDto: UpdateWalletDto) {
     return this.walletService.update(id, updateWalletDto);
   }
 
