@@ -3,7 +3,7 @@ import Binance, { Candle } from 'binance-api-node';
 import { interval, map, Observable, Subject, switchMap } from 'rxjs';
 
 @Injectable()
-export class BinanceServiceService {
+export class BinanceService {
   private binance: ReturnType<typeof Binance> = Binance({}) as never;
 
   private readonly CANDLE_REPEAT_INTERVAL = 150;

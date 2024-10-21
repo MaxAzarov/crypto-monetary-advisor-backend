@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 import { serializeError } from 'serialize-error';
 import { Server, Socket } from 'socket.io';
 
-import { BinanceServiceService } from './binance-service.service';
+import { BinanceService } from './binance-service.service';
 
 @WebSocketGateway({
   namespace: '/api/v1/socket',
@@ -32,7 +32,7 @@ export class BinanceGateway
     this.logger.log('Initialized');
   }
 
-  constructor(private readonly binanceServiceService: BinanceServiceService) {}
+  constructor(private readonly binanceService: BinanceService) {}
 
   handleConnection(client: Socket) {
     this.logger.log(`Client connected: ${client.id}`);
@@ -54,7 +54,7 @@ export class BinanceGateway
   ) {
     try {
       if (data.pair) {
-        const subscription = this.binanceServiceService
+        const subscription = this.binanceService
           .getCandleEmitter(data.pair)
           .subscribe(
             (price) => {
