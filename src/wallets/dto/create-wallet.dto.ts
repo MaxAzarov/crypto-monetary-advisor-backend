@@ -1,5 +1,5 @@
+import { IsWalletAddress } from '@advisor/common/decorators/is-wallet-address';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { IsWalletAddress } from 'src/common/decorators/is-wallet-address';
 
 export class CreateWalletDto {
   @IsWalletAddress()

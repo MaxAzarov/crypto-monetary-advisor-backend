@@ -44,6 +44,7 @@
     "class-validator": "^0.14.0",
     "ethers": "^6.13.2",
     "joi": "^17.13.3",
+    "module-alias": "^2.2.3",
     "openai": "^4.67.1",
     "passport-jwt": "^4.0.1",
     "pg": "^8.13.0",
@@ -83,20 +84,48 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
+    "rootDir": ".",
+    "testRegex": ".*\\.unit\\.test\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "./src/**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "@advisor/guards/(.*)": "<rootDir>/src/auth/guards/$1",
+      "@advisor/guards": "<rootDir>/src/auth/guards",
+      "@advisor/common/(.*)": "<rootDir>/src/common/decorators/$1",
+      "@advisor/common": "<rootDir>/src/common/decorators",
+      "@advisor/users/entities/(.*)": "<rootDir>/src/users/entities/$1",
+      "@advisor/users/entities": "<rootDir>/src/users/entities",
+      "@advisor/database/utils/(.*)": "<rootDir>/src/database/utils/$1",
+      "@advisor/database/utils": "<rootDir>/src/database/utils",
+      "@advisor/monobank/entities/(.*)": "<rootDir>/src/monobank/entities/$1",
+      "@advisor/monobank/entities": "<rootDir>/src/monobank/entities",
+      "@advisor/wallets/entities/(.*)": "<rootDir>/src/wallets/entities/$1",
+      "@advisor/wallets/entities": "<rootDir>/src/wallets/entities"
+    }
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run test"
     }
+  },
+  "_moduleAliases": {
+    "@advisor/guards/(.*)": "dist/auth/guards/$1",
+    "@advisor/guards": "dist/auth/guards",
+    "@advisor/common/(.*)": "dist/common/decorators/$1",
+    "@advisor/common": "dist/common/decorators",
+    "@advisor/users/entities/(.*)": "dist/users/entities/$1",
+    "@advisor/users/entities": "dist/users/entities",
+    "@advisor/database/utils/(.*)": "dist/database/utils/$1",
+    "@advisor/database/utils": "dist/database/utils",
+    "@advisor/monobank/entities/(.*)": "dist/monobank/entities/$1",
+    "@advisor/monobank/entities": "dist/monobank/entities",
+    "@advisor/wallets/entities/(.*)": "dist/wallets/entities/$1",
+    "@advisor/wallets/entities": "dist/wallets/entities"
   }
 }

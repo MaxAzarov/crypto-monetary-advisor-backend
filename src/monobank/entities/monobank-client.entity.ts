@@ -1,4 +1,4 @@
-import { User } from 'src/users/entities/user.entity';
+import { User } from '@advisor/users/entities';
 import {
   Column,
   Entity,

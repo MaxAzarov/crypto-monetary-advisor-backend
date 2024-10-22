@@ -16,6 +16,20 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@advisor/guards": ["src/auth/guards"],
+      "@advisor/guards/*": ["src/auth/guards/*"],
+      "@advisor/common/decorators": ["src/common/decorators"],
+      "@advisor/common/decorators/*": ["src/common/decorators/*"],
+      "@advisor/users/entities/(.*)": ["src/users/entities/$1"],
+      "@advisor/users/entities": ["src/users/entities"],
+      "@advisor/database/utils/(.*)": ["src/database/utils/$1"],
+      "@advisor/database/utils": ["src/database/utils"],
+      "@advisor/monobank/entities/(.*)": ["src/monobank/entities/$1"],
+      "@advisor/monobank/entities": ["src/monobank/entities"],
+      "@advisor/wallets/entities/(.*)": ["src/wallets/entities/$1"],
+      "@advisor/wallets/entities": ["src/wallets/entities"]
+    }
   }
 }

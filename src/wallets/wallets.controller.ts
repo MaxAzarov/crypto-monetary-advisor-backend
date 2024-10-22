@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from '@advisor/guards';
 import {
   Body,
   Controller,
@@ -11,7 +12,6 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards';
 import { IJWTAuthorizedRequest } from 'src/common/types';
 
 import { CreateWalletDto } from './dto/create-wallet.dto';

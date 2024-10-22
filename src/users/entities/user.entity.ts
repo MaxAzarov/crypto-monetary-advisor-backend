@@ -1,8 +1,8 @@
+import { EntityHelper } from '@advisor/database/utils';
+import { MonobankClient } from '@advisor/monobank/entities';
+import { Wallet } from '@advisor/wallets/entities';
 import { ApiProperty } from '@nestjs/swagger';
 import * as bcrypt from 'bcryptjs';
-import { EntityHelper } from 'src/database/utils';
-import { MonobankClient } from 'src/monobank/entities/monobank-client.entity';
-import { Wallet } from 'src/wallets/entities/wallet.entity';
 import {
   AfterLoad,
   BeforeInsert,

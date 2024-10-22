@@ -1,8 +1,8 @@
+import { User } from '@advisor/users/entities';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { User } from 'src/users/entities/user.entity';
 
 export type JwtPayload = {
   id: User['id'];

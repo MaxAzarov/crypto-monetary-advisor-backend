@@ -2,8 +2,24 @@
   "moduleFileExtensions": ["js", "json", "ts"],
   "rootDir": ".",
   "testEnvironment": "node",
-  "testRegex": ".e2e-spec.ts$",
+  "testRegex": ".e2e.test.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@advisor/guards/(.*)": "<rootDir>/../src/auth/guards/$1",
+    "@advisor/guards": "<rootDir>/../src/auth/guards",
+    "@advisor/common/decorators/(.*)": "<rootDir>/../src/common/decorators/$1",
+    "@advisor/common/decorators": "<rootDir>/../src/common/decorators",
+    "@advisor/users/entities/(.*)": "<rootDir>/../src/users/entities/$1",
+    "@advisor/users/entities": "<rootDir>/../src/users/entities",
+    "@advisor/database/utils/(.*)": "<rootDir>/../src/database/utils/$1",
+    "@advisor/database/utils": "<rootDir>/../src/database/utils",
+    "@advisor/monobank/entities/(.*)": [
+      "<rootDir>/../src/monobank/entities/$1"
+    ],
+    "@advisor/monobank/entities": ["<rootDir>/../src/monobank/entities"],
+    "@advisor/wallets/entities/(.*)": ["<rootDir>/../src/wallets/entities/$1"],
+    "@advisor/wallets/entities": ["<rootDir>/../src/wallets/entities"]
   }
 }

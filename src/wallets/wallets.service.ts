@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager } from 'typeorm';
 
 import { CreateWalletDto } from './dto/create-wallet.dto'; // DTO for create
 import { UpdateWalletDto } from './dto/update-wallet.dto'; // DTO for update
@@ -15,12 +15,9 @@ export class WalletService {
   ): Promise<Wallet> {
     const walletRepository = this.entityManager.getRepository(Wallet);
 
-    const wallet = walletRepository.create({
-      ...createWalletDto,
-      userId,
-    });
-
-    return this.entityManager.save(Wallet, wallet);
+    return walletRepository.save(
+      walletRepository.create({ ...createWalletDto, userId }),
+    );
   }
 
   async findAll(userId: number): Promise<Wallet[]> {
