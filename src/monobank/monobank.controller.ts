@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from '@advisor/guards';
 import {
   Body,
   Controller,
@@ -7,7 +8,6 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards';
 import { IJWTAuthorizedRequest } from 'src/common/types';
 
 import { CreateMonobankClientDto } from './dto/create-monobank-client.dto';
