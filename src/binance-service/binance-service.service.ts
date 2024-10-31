@@ -4,9 +4,9 @@ import { interval, map, Observable, Subject, switchMap } from 'rxjs';
 
 @Injectable()
 export class BinanceService {
-  private binance: ReturnType<typeof Binance> = Binance({}) as never;
+  private readonly binance: ReturnType<typeof Binance> = Binance({});
 
-  private readonly CANDLE_REPEAT_INTERVAL = 150;
+  private readonly CANDLE_REPEAT_INTERVAL = 200;
 
   getCandleEmitter(pair: string) {
     return new Observable((subscriber) => {
