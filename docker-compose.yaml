@@ -15,12 +15,12 @@ services:
     image: postgres:15.8
     ports:
       - ${DATABASE_PORT}:5432
-    container_name: schedule-task-db
+    container_name: crypto-advisor-db
     restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=starwars
-      - POSTGRES_DB=cryptoAdvisor
+      - POSTGRES_DB=crypto-monetary
     volumes:
       - db_data:/var/lib/postgresql/data
 
