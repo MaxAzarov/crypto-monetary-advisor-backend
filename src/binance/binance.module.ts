@@ -7,4 +7,4 @@ import { BinanceService } from './binance-service.service';
   controllers: [],
   providers: [BinanceService, BinanceGateway],
 })
-export class BinanceServiceModule {}
+export class BinanceModule {}
